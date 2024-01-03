@@ -21,7 +21,7 @@ type PostgresStore struct {
 }
 
 func NewPostgresStore() (*PostgresStore, error) {
-	connStr := "user=postgres dbname=postgres password=gobank sslmode=disable"
+	connStr := "user=hassan dbname=postgres password=password sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
@@ -130,7 +130,9 @@ func (s *PostgresStore) GetAccounts() ([]*Account, error) {
 }
 
 func scanIntoAccount(rows *sql.Rows) (*Account, error) {
-	account := new(Account)
+	// account := &Account{}
+	account := new(Account) // Zero Initialization & Pointer to Struct
+	// account variable is a pointer
 	err := rows.Scan(
 		&account.ID,
 		&account.FirstName,

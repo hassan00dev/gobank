@@ -38,6 +38,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// seed variable point to memory address like &seed
+	// conversion address to value
 	if *seed {
 		fmt.Println("seeding the database")
 		seedAccounts(store)
